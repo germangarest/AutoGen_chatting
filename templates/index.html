@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat entre Agentes IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/134/134914.png" type="image/png">
+    <meta name="theme-color" content="#128C7E">
+</head>
+<body>
+    <div class="container">
+        <div class="app-container">
+            <div class="app-header">
+                <h1><i class="fas fa-robot"></i> Chat entre Agentes IA</h1>
+            </div>
+            
+            <div id="setup-panel" class="setup-panel">
+                <h2>Configura tu experiencia conversacional</h2>
+                
+                <div class="agent-selection">
+                    <!-- Columna del Agente 1 - Asegurar que sea first-child -->
+                    <div class="agent-column">
+                        <h3>Agente 1</h3>
+                        <div class="agent-options">
+                            {% for tipo, info in agent_types.items() %}
+                            <div class="agent-option" data-type="{{ tipo }}" onclick="selectAgent('agent1', '{{ tipo }}')">
+                                <div class="agent-icon">{{ info.avatar }}</div>
+                                <div class="agent-info">
+                                    <div class="agent-name">{{ info.nombre }}</div>
+                                    <div class="agent-desc">{{ info.descripcion }}</div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Columna del Agente 2 - Asegurar que sea last-child -->
+                    <div class="agent-column">
+                        <h3>Agente 2</h3>
+                        <div class="agent-options">
+                            {% for tipo, info in agent_types.items() %}
+                            <div class="agent-option" data-type="{{ tipo }}" onclick="selectAgent('agent2', '{{ tipo }}')">
+                                <div class="agent-icon">{{ info.avatar }}</div>
+                                <div class="agent-info">
+                                    <div class="agent-name">{{ info.nombre }}</div>
+                                    <div class="agent-desc">{{ info.descripcion }}</div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tema-container">
+                    <h3>Tema de conversación (opcional)</h3>
+                    <input type="text" id="tema-input" placeholder="Sugiere un tema para que los agentes conversen...">
+                </div>
+                
+                <button id="start-btn" class="start-btn" disabled><i class="fas fa-play"></i> Iniciar Conversación</button>
+            </div>
+            
+            <!-- El resto del HTML sigue igual -->
+            
+            <div id="chat-container" class="chat-container hidden">
+                <div class="chat-header">
+                    <button id="back-btn" class="back-btn"><i class="fas fa-arrow-left"></i></button>
+                    <div id="chat-title">Conversación</div>
+                    <div class="chat-actions">
+                        <button class="action-btn sound-toggle" title="Activar/Desactivar sonido"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                </div>
+                
+                <div id="chat-messages" class="chat-messages"></div>
+                
+                <div class="chat-controls">
+                    <button id="continue-btn" class="continue-btn"><i class="fas fa-comment"></i> Continuar conversación</button>
+                    <button id="reset-btn" class="reset-btn"><i class="fas fa-redo"></i> Reiniciar</button>
+                    <!-- El botón de descarga se añade desde JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Desarrollado con <i class="fas fa-heart"></i> por Germán García Estévez</p>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
