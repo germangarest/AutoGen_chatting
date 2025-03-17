@@ -136,8 +136,8 @@ El sistema utiliza el modelo Mistral-Small-24B-Instruct para generar respuestas 
 ## 📱 Capturas de pantalla
 
 <div align="center">
-  <img src="img/img1.jpg" alt="Pantalla de configuración" width="400"/>
-  <img src="img/img2.jpg" alt="Conversación en curso" width="400"/>
+  <img src="img/img1.png" alt="Pantalla de configuración" width="400"/>
+  <img src="img/img2.png" alt="Conversación en curso" width="400"/>
 </div>
 
 ## 👨‍💻 Autor
